@@ -16,45 +16,54 @@ import com.fmi.mpr.*;
 
 public class Demo {
 	public static void main(String[] args) {
-		/*Cat child = new HouseCat("Gosho");
+		Cat child = new HouseCat("Gosho");
 		Cat hc = new HouseCat("Pesho", child);
 		hc.speak();
 		hc.getChild().speak();
 		hc.jump();
-		*/
-		//hc.doHouseStuff();
+
+		// подаваме компаратор като параметър на конструктура.
+		// предварително създаваме клас, който имплементира интерфейса Comparator
+		Set<Name> namesComparator = new TreeSet<>(new NameComparator());
+
+		// не подаваме нищо на конструктура, но NameComparator класа имплементира интерфейса
+		// Comparable. Ако не го подадем ще получим изключение по време на изпълнение на програмата
+		Set<NameComparator> namesComparable = new TreeSet<>();
 		
-		/*Set<Name> names = new TreeSet<>((n1, n2)-> {
+		// Name не имплементира Comparable и използваме ламбда изрази и анонимни класове,
+		// за да подадем Comparator на конструктура
+		Set<Name> namesLambda = new TreeSet<>((n1, n2)-> {
 			int lastCmp = n1.getLastName().compareTo(n2.getLastName());
 	        return (lastCmp != 0 ? lastCmp :n1.getFirstName().compareTo(n2.getFirstName()));	
 		});
 		
-        names.add(new Name("John", "Lennon"));
-        names.add(new Name("Karl", "Marx"));
-        names.add(new Name("Groucho", "Marx"));
-        names.add(new Name("Oscar", "Grouch"));
+        namesLambda.add(new Name("John", "Lennon"));
+        namesLambda.add(new Name("Karl", "Marx"));
+        namesLambda.add(new Name("Groucho", "Marx"));
+        namesLambda.add(new Name("Oscar", "Grouch"));
         
-        names.stream().filter(n->n.getLastName().startsWith("L"))
-        						  .forEach(System.out::println);
-        */
-        /*int[] integers = new int[20];
+        // Използваме потоци, за да филтрираме колекцията като подаваме ламбда израз
+        // на който трябва да отговарят всички филтрирани елементи
+        namesLambda.stream().filter(n->n.getLastName().startsWith("L"))
+        						        .forEach(System.out::println);
+        
+        int[] integers = new int[20];
         for(int i = 0; i < 20; i++) {
         	integers[i] = i;
-        }*/
-        /*
+        }
+        
         System.out.println(Arrays.toString(integers));
         System.out.println(names);
-        */
+        
 
-        /*List<Integer> numbers = new ArrayList<>();
+        List<Integer> numbers = new ArrayList<>();
         for(int i = 0; i < 10; i++) {
             numbers.add(i);
         }
 
         for(int num : numbers) {
             check(num, (Integer x)->{return x%2==0;});
-        }*/
-		
+        }
 		
 		writeToFile("mpr.txt", "wohoo");
 	}
