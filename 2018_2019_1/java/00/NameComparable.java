@@ -1,5 +1,6 @@
-public class NameComparable implements Comparable<NameComparable>{
-    private String firstName;
+public class NameComparable implements Comparable<NameComparable> {
+    
+	private String firstName;
     private String lastName;
 
     NameComparable(String firstName, String lastName){

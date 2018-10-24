@@ -4,7 +4,9 @@ import java.util.function.Predicate;
 
 public class Main {
     public static void main(String[] args) {
-
+    	
+    	
+    	
         Set<Name> names = new TreeSet<>((n1, n2) -> {
             int lastCmp = n1.getLastName().compareTo(n2.getLastName());
             return (lastCmp != 0 ? lastCmp :n1.getFirstName().compareTo(n2.getFirstName()));
@@ -23,7 +25,7 @@ public class Main {
         }
 
         for(int num : numbers) {
-            check(num, (Integer x)->{return x%2!=0;});
+            check(num, (Integer x)->{return x%2==0;});
         }
 
         Person[] people = {
