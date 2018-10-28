@@ -1,3 +1,5 @@
+package com.fmi.mpr.e_00;
+
 import java.util.Comparator;
 
 public class NameComparator<T extends Name> implements Comparator<T> {

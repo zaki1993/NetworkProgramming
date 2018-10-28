@@ -1,3 +1,5 @@
+package com.fmi.mpr.e_00;
+
 import java.io.*;
 import java.util.*;
 import java.util.function.Predicate;

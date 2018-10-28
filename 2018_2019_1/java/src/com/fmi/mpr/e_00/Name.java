@@ -1,3 +1,5 @@
+package com.fmi.mpr.e_00;
+
 public class Name {
     private String firstName;
     private String lastName;

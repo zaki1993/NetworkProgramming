@@ -1,3 +1,5 @@
+package com.fmi.mpr.e_00;
+
 public class NameComparable implements Comparable<NameComparable> {
     
 	private String firstName;

@@ -1,4 +1,4 @@
-package com.fmi.mpr;
+package com.fmi.mpr.e_00;
 
 public interface Animal {
 	void speak();

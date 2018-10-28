@@ -1,3 +1,5 @@
+package com.fmi.mpr.e_00;
+
 import java.util.Set;
 import java.util.TreeSet;
 import java.util.function.Predicate;
@@ -53,7 +55,7 @@ public class Demo {
         }
         
         System.out.println(Arrays.toString(integers));
-        System.out.println(names);
+        System.out.println(namesLambda);
         
 
         List<Integer> numbers = new ArrayList<>();
