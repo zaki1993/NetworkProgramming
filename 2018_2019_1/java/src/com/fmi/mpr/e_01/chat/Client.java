@@ -22,7 +22,7 @@ public class Client {
 		Socket s = new Socket();
 		SocketAddress address = new InetSocketAddress("localhost", port);
 		s.connect(address);
-		
+		/*
 		Scanner sc = new Scanner(System.in);
 		
 		PrintStream ps = new PrintStream(s.getOutputStream(), true);
@@ -30,6 +30,6 @@ public class Client {
 		
 		BufferedReader reader = new BufferedReader(new InputStreamReader(s.getInputStream()));
 		System.out.println(reader.readLine());
-		
+		*/
 	}
 }

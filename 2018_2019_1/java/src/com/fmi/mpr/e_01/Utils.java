@@ -5,10 +5,14 @@ import java.io.IOException;
 
 public final class Utils {
 
-    public static void close(Closeable c) throws IOException {
+    public static void close(Closeable c) {
 
         if (c != null) {
-            c.close();
+        	try {
+        		c.close();
+        	} catch (IOException e) {
+        		// Ignored
+        	}
         }
     }
 }

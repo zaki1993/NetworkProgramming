@@ -9,7 +9,15 @@ public class Main {
 
     public static void main(String[] args) throws IOException {
 
+        Socket s = new Socket();
+        SocketAddress address = new InetSocketAddress("localhost", 5555);
+        //s.bind(address);
+        s.connect(address);
         
-
+        s.getOutputStream();
+        s.getInputStream();
+        
+        
+        
     }
 }
