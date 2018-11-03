@@ -1,4 +1,4 @@
-package com.fmi.mpr.e_01.p_02;
+package com.fmi.mpr.e_01.p_02.chat;
 
 import java.io.IOException;
 import java.io.PrintStream;
@@ -24,7 +24,7 @@ public class Client {
 		
 		Scanner sc = new Scanner(System.in);
 		
-		String line = null;
+		String line;
 		while ((line = sc.nextLine()) != null) {
 			ps.println(line);
 		}

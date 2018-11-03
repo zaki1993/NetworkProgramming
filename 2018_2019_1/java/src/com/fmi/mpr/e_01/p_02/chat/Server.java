@@ -1,4 +1,4 @@
-package com.fmi.mpr.e_01.p_02;
+package com.fmi.mpr.e_01.p_02.chat;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -6,6 +6,7 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.io.PrintStream;
+import java.net.InetSocketAddress;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.net.SocketException;
@@ -22,7 +23,9 @@ public class Server {
 	
 	
 	public Server(int port) throws IOException {
-		listener = new ServerSocket(port);
+
+		listener = new ServerSocket();
+		listener.bind(new InetSocketAddress("localhost", port));
 		this.users = new ConcurrentHashMap<>();
 	}
 	
@@ -43,6 +46,7 @@ public class Server {
 	}
 
 	private void stop() throws IOException {
+
 		if (listener != null) {
 			this.isStarted = false;
 			listener.close();

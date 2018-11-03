@@ -1,4 +1,4 @@
-package com.fmi.mpr.e_01.p_02;
+package com.fmi.mpr.e_01.p_02.chat;
 
 import java.io.IOException;
 
