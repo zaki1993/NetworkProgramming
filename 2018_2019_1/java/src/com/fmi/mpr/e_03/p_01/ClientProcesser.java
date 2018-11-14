@@ -2,8 +2,6 @@ package com.fmi.mpr.e_03.p_01;
 
 import java.net.*;
 
-import com.fmi.mpr.e_01.Utils;
-
 import java.io.*;
 
 public class ClientProcesser extends Thread {
@@ -27,7 +25,11 @@ public class ClientProcesser extends Thread {
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
 		} finally {
-			Utils.close(s);
+			if (s != null) {
+				try {
+					s.close();
+				} catch (IOException e) {;}
+			}
 		}
 	}
 }

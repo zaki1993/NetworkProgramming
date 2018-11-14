@@ -4,8 +4,6 @@ import java.net.*;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
-import com.fmi.mpr.e_01.Utils;
-
 import java.io.*;
 
 public class Server {
@@ -36,7 +34,11 @@ public class Server {
 				} catch (Exception e) {
 					System.out.println(e.getMessage());
 				} finally {
-					Utils.close(s);
+					if (s != null) {
+						try {
+							s.close();
+						} catch (IOException e) {;}
+					}
 				}
 			});
 			
