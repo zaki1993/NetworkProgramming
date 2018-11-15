@@ -1,4 +1,4 @@
-package com.fmi.mpr.e_02.p_01;
+package com.fmi.mpr.e_02;
 
 import java.net.*;
 import java.util.Scanner;

@@ -131,8 +131,10 @@ public class HttpClient {
             pw.println("GET " + query + " HTTP/1.0\r\n");
             pw.println("Host: " + host + "\r\n");
 
-            // read bytes
-            byte[] bytes = in.readAllBytes();
+            // read bytes - compiles with jdk 1.9
+            //byte[] bytes = in.readAllBytes();
+            byte[] bytes = new byte[1024]; // init empty byte array just to compile with jdk 1.8
+            // because ubuntu 16.04 is bullshit and cannot find jdk 1.9
             int carriageIdx = Util.findCarriageReturnIndex(bytes);
 
             byte[] imageBytes = new byte[bytes.length - carriageIdx];
