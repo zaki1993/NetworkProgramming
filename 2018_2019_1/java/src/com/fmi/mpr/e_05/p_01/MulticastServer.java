@@ -9,11 +9,11 @@ public class MulticastServer {
 		
 		DatagramSocket socket = new DatagramSocket();
 		
-		InetAddress group = InetAddress.getByName(ip);
+		InetAddress to = InetAddress.getByName(ip);
 		
 		byte[] msg = message.getBytes();
 		
-		DatagramPacket packet = new DatagramPacket(msg, msg.length, group, port);
+		DatagramPacket packet = new DatagramPacket(msg, msg.length, to, port);
 		
 		socket.send(packet);
 		socket.close();

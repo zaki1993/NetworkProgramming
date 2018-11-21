@@ -40,7 +40,7 @@ public class MulticastClient implements Runnable {
 	public void run(){
 		
 		try {
-			receiveUDPMessage("127.0.0.1", 8888);
+			receiveUDPMessage("230.0.0.1", 8888);
 		} catch(IOException ex) {
 			ex.printStackTrace();
 		}

@@ -116,6 +116,7 @@ public class HTTPServer {
 
 	private String operate(int a, int b, String operation) {
 		
+		System.out.println(a + b + " " + operation);
 		switch (operation) {
 			case "+": return String.valueOf(a + b); 
 			case "*": return String.valueOf(a * b); 
