@@ -30,7 +30,7 @@ public class HTTPServer {
 		try (BufferedInputStream br = new BufferedInputStream(client.getInputStream());
 			 PrintStream ps = new PrintStream(client.getOutputStream(), true)) {
 			
-			String response = read(br);
+			String response = read(ps, br);
 			write(ps, response);		
 		}
 		
@@ -60,7 +60,7 @@ public class HTTPServer {
 		}
 	}
 
-	private String read(BufferedInputStream bis) throws IOException {
+	private String read(PrintStream ps, BufferedInputStream bis) throws IOException {
 		
 		if (bis != null) {
 			StringBuilder request = new StringBuilder();
@@ -76,29 +76,57 @@ public class HTTPServer {
 				}
 			}
 			
-			return parseRequest(request.toString());
+			return parseRequest(ps, request.toString());
 		}
 		return "Error";
 	}
 	
-	private String parseRequest(String request) {
+	private String parseRequest(PrintStream ps, String request) throws IOException {
 		
 		System.out.println(request);
 
 		String[] lines = request.split("\n");
 		
-		StringBuilder body = new StringBuilder();
-		boolean readBody = false;
-		for (String line : lines) {
-			if (readBody) {
-				body.append(line);
-			}
-			if (line.trim().isEmpty()) {
-				readBody = true;
-			}
+		String firstHeader = lines[0];
+		String uri = firstHeader.split(" ")[1];
+		if (uri.length() != 1) {
+			uri = uri.substring(1);
 		}
 		
-		return parseBody(body.toString());
+		if (uri.equals("video")) {
+			sendVideo(ps);
+		} else {
+			StringBuilder body = new StringBuilder();
+			boolean readBody = false;
+			for (String line : lines) {
+				if (readBody) {
+					body.append(line);
+				}
+				if (line.trim().isEmpty()) {
+					readBody = true;
+				}
+			}
+			
+			return parseBody(body.toString());
+		}
+		return null;
+	}
+
+	private void sendVideo(PrintStream ps) throws IOException {
+		ps.println("HTTP/1.0 200 OK");
+		ps.println("Content-Type: video/mp4");
+		ps.println();
+		
+		try (FileInputStream fis = new FileInputStream(new File("video.mp4"))) {
+			
+			int bytesRead = 0;
+			byte[] buffer = new byte[8192];
+			
+			while ((bytesRead = fis.read(buffer, 0, 8192)) > 0) {
+				ps.write(buffer, 0, bytesRead);
+			}
+		}
+		System.out.println("Send video");
 	}
 
 	private String parseBody(String body) {
