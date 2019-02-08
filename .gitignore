@@ -2,3 +2,7 @@
 *.iml
 out
 *.class
+*.classpath
+*.project
+.settings
+bin/*
