@@ -57,9 +57,11 @@ public class UDPServer {
 			
 			long fileSize = bytesToLong(fileSizePacket.getData());
 			
+			System.out.println("File size is: " + fileSize);
+			
 			byte[] response = null;
 			
-			if (fileSize == -1) {
+			if (fileSize != -1) {
 				response = "SUCCESS".getBytes();
 			} else {
 				response = "FAILURE".getBytes();
@@ -86,14 +88,14 @@ public class UDPServer {
 			} while(totalBytesReceived < fileSize);
 			
 			out.flush();
+			System.out.println("Total bytes received: " + totalBytesReceived + "\nFile location is: " + f.getAbsolutePath());
 		}
 	}
 	
 	public static void main(String[] args) throws IOException, ClassNotFoundException {
 		UDPServer s = new UDPServer(8080);
-		s.readObject();
+		s.readFile();
 	}
-	
 
 	public long bytesToLong(byte[] bytes) {
 	    ByteBuffer buffer = ByteBuffer.allocate(Long.BYTES);
