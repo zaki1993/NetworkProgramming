@@ -127,7 +127,8 @@ public class UDPClient {
 	
 	public static void main(String[] args) throws IOException {
 		UDPClient c = new UDPClient();
-		c.sendFileAsListOfPackages(); // OPS
+		//c.sendFileAsListOfPackages(); // OPS
+		c.sendFile();
 	}
 	
 	public byte[] longToBytes(long x) {
